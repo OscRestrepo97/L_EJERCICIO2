@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 600px;
+            box-shadow: 5px 5px 5px #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                + 'contributors', maxZoom: 18,
+        });
+        var map = L.map('map', {
+            center: [1.6205613441047126, -75.60423950674547],
+            layers: osm,
+            zoom: 4,
+            scrollWheelZoom: true, tiled: true,
+        });
+        L.control.scale().addTo(map);
+        var marker = L.marker(
+            [1.6205613441047126, -75.60423950674547]
+
+        ).addTo(map)
+            .bindPopup("Universidad de la Amazonia")
+            .openPopup();
+
+        var circle = L.circle([1.6150215759611721, -75.6137849014745], 500, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5
+        }).addTo(map);
+        circle.bindPopup("Alcaldia de Florencia")
+
+        var polygon = L.polygon([
+            [1.6154096328376395, -75.61303548822282],
+            [1.6146971906426504, -75.61280994224299],
+            [1.6144852615870866, -75.6135722876548],
+            [1.6151931947288636, -75.6137121261623]
+        ]).addTo(map)
+            .bindPopup('Parque Santander');
+
+
+        /* Cesar España  */
+
+
+        var pointA = new L.LatLng(1.60918570614428, -75.60896606276555);
+        var pointB = new L.LatLng(1.609271502980863, -75.60885072776742);
+        var pointC = new L.LatLng(1.6091991118988496, -75.60753912756671);
+        var pointD = new L.LatLng(1.6090489674269288, -75.60715557168528);
+        var pointE = new L.LatLng(1.6096280960401375, -75.6067693335931);
+        var pointF = new L.LatLng(1.608534262893626, -75.60462330090273);
+        var pointG = new L.LatLng(1.609630924235033, -75.60412477107968);
+        var pointH = new L.LatLng(1.6102985306334603, -75.60409794898955);
+        var pointI = new L.LatLng(1.6127410566039502, -75.60616861434872);
+        var pointK = new L.LatLng(1.6138859058455421, -75.60565631244441);
+        var pointL = new L.LatLng(1.6153524916560396, -75.60425083492939);
+        var pointM = new L.LatLng(1.6188889163194127, -75.60642878861225);
+        var pointN = new L.LatLng(1.620118153009867, -75.60517159823273);
+        var pointO = new L.LatLng(1.6200377189058328, -75.60428110489796);
+        var pointP = new L.LatLng(1.6206632953800106, -75.60420933926463);
+        var latlngs = [pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH, pointI, pointK, pointL, pointM, pointN, pointO, pointP];
+        var polyline = L.polyline(
+            latlngs, { color: 'red' }
+        )
+            .addTo(map)
+            .bindPopup('Cesar España');
+
+        /* Oscar Restrepo  */
+        var marker4 = L.marker([1.612466, -75.601951], {
+            draggable: false,
+            title: 'informacion'
+        }).addTo(map)
+            .bindPopup('Oscar Restrepo ')
+            .openPopup();
+
+    </script>
+</body>
+
+</html>
